@@ -5,6 +5,7 @@ import time
 import threading
 import random
 from icmp import get_icmp_ip
+from tcp import get_tcp_ip
 
 
 def parse_args():
@@ -22,11 +23,11 @@ def main():
 	num = 1
 
 	while True:
-		result = get_icmp_ip(ttl, args.ip, 2)
+		result = get_tcp_ip(ttl, args.ip, args.port, 2)
 		
 		if result:
-			ip, time_in_s = result
-			print(num, ip, time_in_s)
+			ip, time = result
+			print(num, ip, time)
 
 			if ip == args.ip:
 				break
