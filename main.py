@@ -6,7 +6,7 @@ import threading
 import random
 from icmp import get_icmp_ip
 from tcp import get_tcp_ip
-
+from udp import get_udp_ip
 
 def parse_args():
 	parser = argparse.ArgumentParser(description='Traceroute')
@@ -22,8 +22,12 @@ def main():
 	ttl = 1
 	num = 1
 
+	#result = get_udp_ip(8, args.ip, args.port, 2)
+
+	#print(result)
+
 	while True:
-		result = get_tcp_ip(ttl, args.ip, args.port, 2)
+		result = get_udp_ip(ttl, args.ip, args.port, 2)
 		
 		if result:
 			ip, time = result
